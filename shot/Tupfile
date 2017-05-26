@@ -1,0 +1,20 @@
+include_rules
+
+CFLAGS += `pkg-config --cflags libmongocxx`
+LFLAGS += `pkg-config --libs libmongocxx`
+
+
+LIBS += \
+-lpthread\
+-lcrypto
+#-lboost_program_options\
+#-lboost_system\
+#-lboost_filesystem\
+#-lboost_thread\
+#-lmongocxx
+
+: |> echo ">--- HELLO" |>
+: |> echo "CFLAGS = $(CFLAGS)" |>
+
+: foreach *.cpp |> !ccp |> {objs}
+: {objs} |> !lib |>

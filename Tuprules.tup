@@ -1,0 +1,24 @@
+export HOME
+
+CC = clang++
+OPT += -Wall -std=c++11
+
+ifeq (@(DEBUG),1)
+BUILD=build-debug
+CFLAGS += -g -O0
+else
+BUILD=build-release
+CFLAGS += -O2
+endif
+
+CFLAGS += -I$(TUP_CWD)/shot\
+-I/usr/include\
+
+LFLAGS += -L$(TUP_CWD)/shot\
+-L/usr/local/lib\
+
+!cc = |> ^ cc %f^ $(CC) $(OPT) $(CFLAGS) -c %f -o %o |> %B.o
+!ccp = |> ^ ccp %f^ $(CC) $(OPT) $(CFLAGS) -fPIC -c %f -o %o |> %B.o
+!exe = |> ^ exe %o^ $(CC) $(OPT) $(LFLAGS) $(RPATH) -o %o %f $(LIBS) |> %d
+!lib = |> ^ lib %o^ $(CC) $(OPT) $(LFLAGS) $(RPATH) -shared -o %o %f $(LIBS) |> lib%d.so
+!ar = |> ^ ar %o^ ar crs %o %f |> lib%d.a

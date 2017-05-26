@@ -1,0 +1,10 @@
+include_rules
+
+LFLAGS += -L../shot
+LIBS += -lgmock -lgtest -lpthread -lshot
+RPATH += -Wl,-rpath="$"ORIGIN/../shot:"$"ORIGIN
+
+: foreach *.cpp |> !cc |> {objs}
+: {objs} | ../shot/libshot.so |> !exe |>
+
+#: {objs} | ../shot/libshot.so |> $(CC)  $(LFLAGS) -L../shot $(RPATH) -o %o %f $(LIBS) |> test
