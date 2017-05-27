@@ -4,10 +4,10 @@
 namespace shot {
 
 
-class Handler {
+class RequestHandler {
 public:
-  Handler();
-  virtual ~Handler();
+  RequestHandler();
+  virtual ~RequestHandler();
   virtual void get();
   virtual void xget();
   virtual void post();

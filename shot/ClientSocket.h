@@ -1,24 +1,26 @@
 #pragma once
 #include <arpa/inet.h>
 /* #include <sys/socket.h> */
-#include "ClientSocket.h"
 
 
 namespace shot {
 
 
-class Socket {
+class ClientSocket {
 public:
-  Socket();
-  void bind();
-  void listen();
-  void accept(ClientSocket& client);
+  ClientSocket();
+  void read();
+  void write();
   void close();
   int getId() const;
 private:
   int id;
-  sockaddr_in addr;
+  sockaddr addr;
+  friend class Socket;
 };
+
+
+const int SOCKET_INVALID = -1;
 
 
 } /* namespace shot */

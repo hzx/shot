@@ -5,8 +5,8 @@ LFLAGS += `pkg-config --libs libmongocxx`
 
 
 LIBS += \
--lpthread\
--lcrypto
+-lpthread
+#-lcrypto
 #-lboost_program_options\
 #-lboost_system\
 #-lboost_filesystem\

@@ -1,14 +1,13 @@
 #pragma once
-#include "HttpRequest.h"
 
 
 namespace shot {
 
 
-class HttpParser {
+class Response {
 public:
 private:
 };
-  
 
+  
 } /* namespace shot */

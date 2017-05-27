@@ -1,13 +1,15 @@
 #pragma once
+#include <string>
 
 
 namespace shot {
 
 
-class HttpResponse {
+class Router {
 public:
+  Router();
 private:
 };
 
-  
+
 } /* namespace shot */

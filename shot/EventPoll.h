@@ -4,13 +4,13 @@
 namespace shot {
 
 
-class IOLoop {
+class EventPoll {
 public:
-  IOLoop();
-  void start();
+  EventPoll();
+  void close();
 private:
-  bool running;
+  int id;
 };
 
-  
+
 } /* namespace shot */

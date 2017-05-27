@@ -1,16 +1,14 @@
 #pragma once
+#include "Request.h"
 
 
 namespace shot {
 
 
-class IOLoop {
+class RequestParser {
 public:
-  IOLoop();
-  void start();
 private:
-  bool running;
 };
-
   
+
 } /* namespace shot */

@@ -4,7 +4,7 @@
 namespace shot {
 
 
-class HttpRequest {
+class Request {
 public:
 private:
 };

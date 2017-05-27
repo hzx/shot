@@ -1,12 +1,12 @@
 #pragma once
-#include "HttpRequest.h"
-#include "HttpResponse.h"
-#include "HttpParser.h"
-#include "IOLoop.h"
 #include "Config.h"
-#include "ConfigParser.h"
-#include "CommandParser.h"
+#include "Request.h"
+#include "RequestParser.h"
+#include "Response.h"
+#include "Router.h"
 #include "Socket.h"
+#include "ClientSocket.h"
+#include "EventPoll.h"
 
 
 namespace shot {
@@ -14,7 +14,12 @@ namespace shot {
 
 class Server {
 public:
+  void wait();
+  void process();
 private:
+  Socket socket;
+  EventPoll eventPoll;
+  RequestParser requestParser;
 };
 
   
