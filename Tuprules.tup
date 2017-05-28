@@ -13,9 +13,11 @@ endif
 
 CFLAGS += -I$(TUP_CWD)/shot\
 -I/usr/include\
+-I/usr/local/include
 
 LFLAGS += -L$(TUP_CWD)/shot\
--L/usr/local/lib\
+-L/usr/lib\
+-L/usr/local/lib
 
 !cc = |> ^ cc %f^ $(CC) $(OPT) $(CFLAGS) -c %f -o %o |> %B.o
 !ccp = |> ^ ccp %f^ $(CC) $(OPT) $(CFLAGS) -fPIC -c %f -o %o |> %B.o
