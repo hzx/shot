@@ -1,6 +1,5 @@
 #pragma once
 #include <arpa/inet.h>
-/* #include <sys/socket.h> */
 #include "ClientSocket.h"
 
 
@@ -10,14 +9,17 @@ namespace shot {
 class Socket {
 public:
   Socket();
-  void bind();
+  ~Socket();
+  void bind(int port);
   void listen();
-  void accept(ClientSocket& client);
+  ClientSocket accept();
   void close();
   int getId() const;
+  int getPort() const;
 private:
   int id;
   sockaddr_in addr;
+  int port;
 };
 
 

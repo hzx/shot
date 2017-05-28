@@ -25,6 +25,18 @@ void ClientSocket::close() {
 }
 
 
+void ClientSocket::shutdownRead() {
+}
+
+
+void ClientSocket::shutdownWrite() {
+}
+
+
+void ClientSocket::shutdownReadWrite() {
+}
+
+
 int ClientSocket::getId() const {
   return id;
 }
