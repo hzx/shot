@@ -2,7 +2,7 @@ include_rules
 
 LFLAGS += -L../shot
 LIBS += -lgmock -lgtest -lpthread -lshot
-RPATH += -Wl,-rpath="$"ORIGIN/../shot:"$"ORIGIN
+#RPATH += -Wl,-rpath="$"ORIGIN/../shot:"$"ORIGIN
 
 : foreach *.cpp |> !cc |> {objs}
 : {objs} | ../shot/libshot.so |> !exe |>
