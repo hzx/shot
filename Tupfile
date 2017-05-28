@@ -1,0 +1,4 @@
+include_rules
+
+: shot/libshot.so |> cp %f %o |> bin/%b
+: test/test |> cp %f %o |> bin/%b
