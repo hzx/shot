@@ -12,28 +12,39 @@ ClientSocket::ClientSocket()
 }
 
 
+ClientSocket::~ClientSocket() {
+  close();
+}
+
+
+// TODO(dem): implement read
 void ClientSocket::read() {
 }
 
 
+// TODO(dem): implement write
 void ClientSocket::write() {
 }
 
 
-void ClientSocket::close() {
-  ::close(id);
+int ClientSocket::close() {
+  if (id == SOCKET_INVALID) return 0;
+  return ::close(id);
 }
 
 
-void ClientSocket::shutdownRead() {
+int ClientSocket::shutdownRead() {
+  return ::shutdown(id, SHUT_RD);
 }
 
 
-void ClientSocket::shutdownWrite() {
+int ClientSocket::shutdownWrite() {
+  return ::shutdown(id, SHUT_WR);
 }
 
 
-void ClientSocket::shutdownReadWrite() {
+int ClientSocket::shutdownReadWrite() {
+  return ::shutdown(id, SHUT_RDWR);
 }
 
 

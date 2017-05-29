@@ -16,9 +16,6 @@ Socket::Socket()
 
   // TODO(dem): SOCK_NONBLOCK is epoll flag, figure out which flag in kqueue
   id = socket(AF_INET, SOCK_STREAM /*| SOCK_NONBLOCK*/, 0);
-  if (id == SOCKET_INVALID) {
-    // TODO(dem): report error
-  }
 }
 
 
@@ -27,7 +24,7 @@ Socket::~Socket() {
 }
 
 
-void Socket::bind(int port_) {
+int Socket::bind(int port_) {
   port = port_;
 
   addr.sin_family = AF_INET;
@@ -39,16 +36,12 @@ void Socket::bind(int port_) {
   setsockopt(id, SOL_SOCKET, SO_REUSEADDR,
       reinterpret_cast<void*>(&optionValue), sizeof(optionValue));
 
-  if (::bind(id, reinterpret_cast<sockaddr*>(&addr), sizeof(sockaddr)) == -1) {
-    // TODO(dem): report error
-  }
+  return ::bind(id, reinterpret_cast<sockaddr*>(&addr), sizeof(sockaddr));
 }
 
 
-void Socket::listen() {
-  if (::listen(id, 1) == -1) {
-    // TODO(dem): report error
-  }
+int Socket::listen() {
+  return ::listen(id, 1);
 }
 
 
@@ -61,8 +54,8 @@ ClientSocket Socket::accept() {
 }
 
 
-void Socket::close() {
-  ::close(id);
+int Socket::close() {
+  return ::close(id);
 }
 
 

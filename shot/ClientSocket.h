@@ -8,12 +8,13 @@ namespace shot {
 class ClientSocket {
 public:
   ClientSocket();
+  ~ClientSocket();
   void read();
   void write();
-  void close();
-  void shutdownRead();
-  void shutdownWrite();
-  void shutdownReadWrite();
+  int close();
+  int shutdownRead();
+  int shutdownWrite();
+  int shutdownReadWrite();
   int getId() const;
 private:
   int id;
